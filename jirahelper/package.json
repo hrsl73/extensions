@@ -9,13 +9,37 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onView:githubBoardView"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "github-board-container",
+          "title": "GitHub Projects",
+          "icon": "resources/github-board-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "github-board-container": [
+        {
+          "id": "githubBoardView",
+          "name": "Board",
+          "type": "webview"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "jirahelper.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "jirahelper.openBoardView",
+        "title": "Open GitHub Board"
       }
     ]
   },
@@ -44,5 +68,13 @@
     "npm-run-all": "^4.1.5",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.1"
+  },
+  "dependencies": {
+    "axios": "^1.16.1",
+    "dayjs": "^1.11.20",
+    "dotenv": "^17.4.2",
+    "open": "^11.0.0",
+    "simple-git": "^3.36.0",
+    "zod": "^4.4.3"
   }
 }
